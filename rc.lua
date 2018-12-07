@@ -85,14 +85,12 @@ local themes = {
     "vertex",          -- 10
 }
 
-local chosen_theme = themes[5]
+local chosen_theme = themes[8]
 local modkey       = "Mod4"
 local altkey       = "Mod1"
-local terminal     = "urxvtc"
-local editor       = os.getenv("EDITOR") or "vim"
-local gui_editor   = "gvim"
+local terminal     = "termite"
+local editor       = "vim"
 local browser      = "firefox"
-local guieditor    = "atom"
 local scrlocker    = "slock"
 
 awful.util.terminal = terminal
@@ -650,7 +648,7 @@ awful.rules.rules = {
 
     -- Titlebars
     { rule_any = { type = { "dialog", "normal" } },
-      properties = { titlebars_enabled = true } },
+      properties = { titlebars_enabled = false } },
 
     -- Set Firefox to always map on the first tag on screen 1.
     { rule = { class = "Firefox" },

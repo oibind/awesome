@@ -17,7 +17,7 @@ local theme                                     = {}
 theme.default_dir                               = require("awful.util").get_themes_dir() .. "default"
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/rainbow"
 theme.wallpaper                                 = theme.dir .. "/wall.png"
-theme.font                                      = "Misc Tamsyn 10.5"
+theme.font                                      = "xos4 Terminus 9"
 theme.fg_normal                                 = "#9E9E9E"
 theme.fg_focus                                  = "#EBEBFF"
 theme.bg_normal                                 = "#242424"
@@ -91,16 +91,6 @@ local gray   = theme.fg_normal
 local mytextclock = wibox.widget.textclock(markup(white, " %H:%M "))
 mytextclock.font = theme.font
 
--- Calendar
-theme.cal = lain.widget.cal({
-    attach_to = { mytextclock },
-    notification_preset = {
-        font = "Misc Tamsyn 11",
-        fg   = white,
-        bg   = theme.bg_normal
-    }
-})
-
 -- Mail IMAP check
 --[[ commented because it needs to be set before use
 theme.mail = lain.widget.imap({
@@ -123,26 +113,6 @@ theme.mail = lain.widget.imap({
     end
 })
 --]]
-
--- MPD
-theme.mpd = lain.widget.mpd({
-    settings = function()
-        mpd_notification_preset.fg = white
-
-        artist = mpd_now.artist .. " "
-        title  = mpd_now.title  .. " "
-
-        if mpd_now.state == "pause" then
-            artist = "mpd "
-            title  = "paused "
-        elseif mpd_now.state == "stop" then
-            artist = ""
-            title  = ""
-        end
-
-        widget:set_markup(markup.font(theme.font, markup(gray, artist) .. markup(white, title)))
-    end
-})
 
 -- /home fs
 --[[ commented because it needs Gio/Glib >= 2.54
@@ -191,12 +161,6 @@ theme.volume.bar:buttons(my_table.join (
 ))
 local volumebg = wibox.container.background(theme.volume.bar, "#585858", gears.shape.rectangle)
 local volumewidget = wibox.container.margin(volumebg, 7, 7, 5, 5)
-
--- Weather
-theme.weather = lain.widget.weather({
-    city_id = 2643743, -- placeholder (London)
-    notification_preset = { font = theme.font, fg = white }
-})
 
 -- Separators
 local first = wibox.widget.textbox(markup.font("Misc Tamsyn 4", " "))
@@ -263,10 +227,8 @@ function theme.at_screen_connect(s)
             layout = wibox.layout.fixed.horizontal,
             wibox.widget.systray(),
             spr,
-            theme.mpd.widget,
             --theme.mail.widget,
             --theme.fs.widget,
-            volumewidget,
             mytextclock,
         },
     }
