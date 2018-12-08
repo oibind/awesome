@@ -88,7 +88,7 @@ local white  = theme.fg_focus
 local gray   = theme.fg_normal
 
 -- Textclock
-local mytextclock = wibox.widget.textclock(markup(white, " %H:%M "))
+local mytextclock = wibox.widget.textclock(markup (gray, "%A %d %B") .. markup(white, " %H:%M "))
 mytextclock.font = theme.font
 
 -- Mail IMAP check
