@@ -91,46 +91,6 @@ local gray   = theme.fg_normal
 local mytextclock = wibox.widget.textclock(markup (gray, "%A %d %B") .. markup(white, " %H:%M "))
 mytextclock.font = theme.font
 
--- Mail IMAP check
---[[ commented because it needs to be set before use
-theme.mail = lain.widget.imap({
-    timeout  = 180,
-    server   = "server",
-    mail     = "mail",
-    password = "keyring get mail",
-    settings = function()
-        mail_notification_preset.fg = white
-
-        mail  = ""
-        count = ""
-
-        if mailcount > 0 then
-            mail = "Mail "
-            count = mailcount .. " "
-        end
-
-        widget:set_markup(markup.font(theme.font, markup(gray, mail) .. markup(white, count)))
-    end
-})
---]]
-
--- /home fs
---[[ commented because it needs Gio/Glib >= 2.54
-theme.fs = lain.widget.fs({
-    notification_preset = { fg = white, bg = theme.bg_normal, font = "Misc Tamsyn 10.5" },
-    settings  = function()
-        local fs_header, fs_p = "", ""
-
-        if fs_now["/home"].percentage >= 90 then
-            fs_header = " Hdd "
-            fs_p      = fs_now["/home"].percentage
-        end
-
-        widget:set_markup(markup.font(theme.font, markup(gray, fs_header) .. markup(white, fs_p)))
-    end
-})
---]]
-
 -- ALSA volume bar
 theme.volume = lain.widget.alsabar({
     ticks = true, width = 67,
@@ -227,8 +187,6 @@ function theme.at_screen_connect(s)
             layout = wibox.layout.fixed.horizontal,
             wibox.widget.systray(),
             spr,
-            --theme.mail.widget,
-            --theme.fs.widget,
             mytextclock,
         },
     }
