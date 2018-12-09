@@ -94,7 +94,7 @@ local browser      = "firefox"
 local scrlocker    = "slock"
 
 awful.util.terminal = terminal
-awful.util.tagnames = { "1", "2", "3", "4", "5" }
+awful.util.tagnames = { "☯", "☮", "♌", "♀", "ɸ" }
 awful.layout.layouts = {
     awful.layout.suit.floating,
     awful.layout.suit.tile,
