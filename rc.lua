@@ -91,6 +91,7 @@ local altkey       = "Mod1"
 local terminal     = "termite"
 local editor       = "vim"
 local browser      = "firefox"
+local slack 	   = "slack"
 local scrlocker    = "slock"
 
 awful.util.terminal = terminal
@@ -485,7 +486,7 @@ globalkeys = my_table.join(
               {description = "copy gtk to terminal", group = "hotkeys"}),
 
     -- User programs
-    awful.key({ modkey }, "q", function () awful.spawn(browser) end,
+    awful.key({ modkey }, "q", function () awful.spawn(browser) awful.spawn(slack) end,
               {description = "run browser", group = "launcher"}),
     awful.key({ modkey }, "a", function () awful.spawn(guieditor) end,
               {description = "run gui editor", group = "launcher"}),
