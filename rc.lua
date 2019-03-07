@@ -95,7 +95,7 @@ local slack 	   = "slack"
 local scrlocker    = "slock"
 
 awful.util.terminal = terminal
-awful.util.tagnames = { "☯", "☮", "♌", "♀", "ɸ" }
+awful.util.tagnames = { "☯", "☮", "⌘", "♀", "ɸ" }
 awful.layout.layouts = {
     awful.layout.suit.floating,
     awful.layout.suit.tile,
