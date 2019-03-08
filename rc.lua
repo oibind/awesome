@@ -91,7 +91,6 @@ local altkey       = "Mod1"
 local terminal     = "termite"
 local editor       = "vim"
 local browser      = "firefox"
-local scrlocker    = "xtrlock"
 
 awful.util.terminal = terminal
 awful.util.tagnames = { "☯", "☮", "☘", "♀", "ɸ" }
@@ -244,7 +243,10 @@ globalkeys = my_table.join(
               {description = "take a screenshot", group = "hotkeys"}),
 
     -- X screen locker
-    awful.key({ altkey, "Control" }, "l", function () os.execute(scrlocker) end,
+    awful.key({ altkey, "Control" }, "l", function () os.execute("xtrlock") end,
+              {description = "lock screen", group = "hotkeys"}),
+    -- X screen locker
+    awful.key({ altkey, "Control" }, ";", function () os.execute("xtrlock -b") end,
               {description = "lock screen", group = "hotkeys"}),
 
     -- Hotkeys
