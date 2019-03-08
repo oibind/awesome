@@ -242,11 +242,11 @@ globalkeys = my_table.join(
     awful.key({ modkey }, "Print", function() os.execute("maim ~/$(date '+%Y-%m-%d-%H%M%S').png") end,
               {description = "take a screenshot", group = "hotkeys"}),
 
-    -- X screen locker
-    awful.key({ altkey, "Control" }, "l", function () os.execute("xtrlock") end,
+    -- lock but still display screen
+    awful.key({ altkey, "Control" }, ";", function () os.execute("xtrlock") end,
               {description = "lock screen", group = "hotkeys"}),
-    -- X screen locker
-    awful.key({ altkey, "Control" }, ";", function () os.execute("xtrlock -b") end,
+    -- lock but blackscreeen
+    awful.key({ altkey, "Control" }, "l", function () os.execute("xtrlock -b") end,
               {description = "lock screen", group = "hotkeys"}),
 
     -- Hotkeys
