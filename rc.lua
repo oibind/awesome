@@ -216,7 +216,7 @@ globalkeys = my_table.join(
               {description = "take a screenshot", group = "hotkeys"}),
     awful.key({}, "Print", function() os.execute("maim | xclip -selection clipboard -t image/png") end,
               {description = "take a screenshot", group = "hotkeys"}),
-    awful.key({ modkey }, "Print", function() os.execute("maim ~/$(date '+%Y-%m-%d-%H%M%S').png") end,
+    awful.key({ modkey }, "Print", function() os.execute("maim ~/(date '+%Y-%m-%d-%H%M%S').png") end,
               {description = "take a screenshot", group = "hotkeys"}),
 
     -- lock but still display screen
