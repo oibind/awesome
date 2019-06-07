@@ -66,6 +66,7 @@ local themes = {
 local chosen_theme = themes[8]
 local modkey       = "Mod4"
 local altkey       = "Mod1"
+local tmux         = "termite -e tmux"
 local terminal     = "termite"
 local editor       = "vim"
 local browser      = "firefox"
@@ -351,7 +352,9 @@ globalkeys = my_table.join(
               {description = "delete tag", group = "tag"}),
 
     -- Standard program
-    awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
+    awful.key({ modkey,           }, "Return", function () awful.spawn(tmux) end,
+              {description = "open a terminal with tmux", group = "launcher"}),
+    awful.key({ modkey,           }, "]", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
