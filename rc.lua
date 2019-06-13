@@ -743,3 +743,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- possible workaround for tag preservation when switching back to default screen:
 -- https://github.com/lcpz/awesome-copycats/issues/251
 -- }}}
+
+-- autostart (abrasive)
+awful.util.spawn("wicd-gtk --tray")
+awful.util.spawn("compton -b")
