@@ -262,7 +262,11 @@ globalkeys = my_table.join(
               {description = "take a screenshot", group = "hotkeys"}),
 
     -- X screen locker
-    awful.key({ altkey, "Control" }, "l", function () os.execute(scrlocker) end,
+    -- lock but still display screen
+    awful.key({ altkey, "Control" }, ";", function () os.execute("xtrlock") end,
+              {description = "lock screen", group = "hotkeys"}),
+    -- lock but blackscreeen
+    awful.key({ altkey, "Control" }, "l", function () os.execute("xtrlock -b") end,
               {description = "lock screen", group = "hotkeys"}),
 
     -- Hotkeys
