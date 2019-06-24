@@ -339,8 +339,8 @@ function theme.at_screen_connect(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            -- s.mylayoutbox,
             wibox.widget.systray(),
+            s.mylayoutbox,
         },
     }
 end
