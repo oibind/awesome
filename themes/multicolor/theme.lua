@@ -17,11 +17,12 @@ local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 local theme                                     = {}
 theme.confdir                                   = os.getenv("HOME") .. "/.config/awesome/themes/multicolor"
 theme.wallpaper                                 = theme.confdir .. "/wall.png"
-theme.font                                      = "xos4 Terminus 8"
-theme.menu_bg_normal                            = "#000000"
-theme.menu_bg_focus                             = "#000000"
-theme.bg_normal                                 = "#000000"
-theme.bg_focus                                  = "#000000"
+-- theme.font                                      = "xos4 Terminus 8"
+theme.font                                      = "mononoki 10"
+theme.menu_bg_normal                            = "#9E9E9E"
+theme.menu_bg_focus                             = "#EBEBFF"
+theme.bg_normal                                 = "#242424"
+theme.bg_focus                                  = "#242424"
 theme.bg_urgent                                 = "#000000"
 theme.fg_normal                                 = "#aaaaaa"
 theme.fg_focus                                  = "#ff8c00"
@@ -56,7 +57,7 @@ theme.taglist_squares_sel                       = theme.confdir .. "/icons/squar
 theme.taglist_squares_unsel                     = theme.confdir .. "/icons/square_b.png"
 theme.tasklist_plain_task_name                  = true
 theme.tasklist_disable_icon                     = true
-theme.useless_gap                               = 0
+theme.useless_gap                               = dpi(8)
 theme.layout_tile                               = theme.confdir .. "/icons/tile.png"
 theme.layout_tilegaps                           = theme.confdir .. "/icons/tilegaps.png"
 theme.layout_tileleft                           = theme.confdir .. "/icons/tileleft.png"
@@ -112,7 +113,7 @@ theme.cal = lain.widget.cal({
 -- Weather
 local weathericon = wibox.widget.imagebox(theme.widget_weather)
 theme.weather = lain.widget.weather({
-    city_id = 2643743, -- placeholder (London)
+    city_id = 2655984, -- placeholder (London)
     notification_preset = { font = "xos4 Terminus 10", fg = theme.fg_normal },
     weather_na_markup = markup.fontfg(theme.font, "#eca4c4", "N/A "),
     settings = function()
@@ -283,7 +284,7 @@ function theme.at_screen_connect(s)
     s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons)
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(20), bg = theme.bg_normal, fg = theme.fg_normal })
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(19), bg = theme.bg_normal, fg = theme.fg_normal })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -300,7 +301,7 @@ function theme.at_screen_connect(s)
         nil,
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            wibox.widget.systray(),
+            -- wibox.widget.systray(),
             --mailicon,
             --theme.mail.widget,
             netdownicon,
@@ -338,7 +339,8 @@ function theme.at_screen_connect(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            s.mylayoutbox,
+            -- s.mylayoutbox,
+            wibox.widget.systray(),
         },
     }
 end

@@ -48,6 +48,29 @@ do
 end
 -- }}}
 
+-- {{{ Autostart windowless processes
+
+-- This function will run once every time Awesome is started
+local function run_once(cmd_arr)
+    for _, cmd in ipairs(cmd_arr) do
+        awful.spawn.with_shell(string.format("pgrep -u $USER -fx '%s' > /dev/null || (%s)", cmd, cmd))
+    end
+end
+
+run_once({ "unclutter -root" }) -- entries must be separated by commas
+
+-- This function implements the XDG autostart specification
+--[[
+awful.spawn.with_shell(
+    'if (xrdb -query | grep -q "^awesome\\.started:\\s*true$"); then exit; fi;' ..
+    'xrdb -merge <<< "awesome.started:true";' ..
+    -- list each of your autostart commands, followed by ; inside single quotes, followed by ..
+    'dex --environment Awesome --autostart --search-paths "$XDG_CONFIG_DIRS/autostart:$XDG_CONFIG_HOME/autostart"' -- https://github.com/jceb/dex
+)
+--]]
+
+-- }}}
+
 -- {{{ Variable definitions
 
 local themes = {
@@ -63,16 +86,18 @@ local themes = {
     "vertex",          -- 10
 }
 
-local chosen_theme = themes[8]
+local chosen_theme = themes[5]
 local modkey       = "Mod4"
 local altkey       = "Mod1"
-local tmux         = "termite -e tmux"
 local terminal     = "termite"
-local editor       = "vim"
-local browser      = "firefox"
+local editor       = "nvim"
+local gui_editor   = "gvim"
+local browser      = "chromium"
+local guieditor    = "atom"
+local scrlocker    = "xtrlock"
 
 awful.util.terminal = terminal
-awful.util.tagnames = { "☯", "☮", "☘", "♀", "ɸ" }
+awful.util.tagnames = { "1", "2", "3", "4", "5" }
 awful.layout.layouts = {
     awful.layout.suit.floating,
     awful.layout.suit.tile,
@@ -229,18 +254,12 @@ root.buttons(my_table.join(
 -- {{{ Key bindings
 globalkeys = my_table.join(
     -- Take a screenshot
-    awful.key({ altkey }, "Print", function() os.execute("maim -s | xclip -selection clipboard -t image/png") end,
-              {description = "take a screenshot", group = "hotkeys"}),
-    awful.key({}, "Print", function() os.execute("maim | xclip -selection clipboard -t image/png") end,
-              {description = "take a screenshot", group = "hotkeys"}),
-    awful.key({ modkey }, "Print", function() os.execute("maim ~/$(date '+%Y-%m-%d-%H%M%S').png") end,
+    -- https://github.com/lcpz/dots/blob/master/bin/screenshot
+    awful.key({ altkey }, "p", function() os.execute("screenshot") end,
               {description = "take a screenshot", group = "hotkeys"}),
 
-    -- lock but still display screen
-    awful.key({ altkey, "Control" }, ";", function () os.execute("xtrlock") end,
-              {description = "lock screen", group = "hotkeys"}),
-    -- lock but blackscreeen
-    awful.key({ altkey, "Control" }, "l", function () os.execute("xtrlock -b") end,
+    -- X screen locker
+    awful.key({ altkey, "Control" }, "l", function () os.execute(scrlocker) end,
               {description = "lock screen", group = "hotkeys"}),
 
     -- Hotkeys
@@ -352,9 +371,7 @@ globalkeys = my_table.join(
               {description = "delete tag", group = "tag"}),
 
     -- Standard program
-    awful.key({ modkey,           }, "Return", function () awful.spawn(tmux) end,
-              {description = "open a terminal with tmux", group = "launcher"}),
-    awful.key({ modkey,           }, "]", function () awful.spawn(terminal) end,
+    awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
@@ -743,7 +760,3 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- possible workaround for tag preservation when switching back to default screen:
 -- https://github.com/lcpz/awesome-copycats/issues/251
 -- }}}
-
--- autostart (abrasive)
-awful.util.spawn("wicd-gtk --tray")
-awful.util.spawn("compton -b")
