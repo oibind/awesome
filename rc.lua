@@ -90,7 +90,7 @@ local altkey       = "Mod1"
 local terminal     = "termite"
 local editor       = "nvim"
 local gui_editor   = "gvim"
-local browser      = "chromium"
+local browser      = "firefox"
 local guieditor    = "atom"
 local scrlocker    = "xtrlock"
 
