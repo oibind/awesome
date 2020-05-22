@@ -756,6 +756,6 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 -- autostart (abrasive)
-awful.util.spawn("wicd-gtk --tray")
+awful.util.spawn("nm-applet")
 awful.util.spawn("picom -b")
 awful.util.spawn("unclutter -root")
