@@ -95,7 +95,7 @@ local guieditor    = "atom"
 local scrlocker    = "xtrlock"
 
 awful.util.terminal = terminal
-awful.util.tagnames = { "1", "2", "3", "4", "5" }
+awful.util.tagnames = { "🦊", "📝", "🎵", "🎬", "🎉" }
 awful.layout.layouts = {
     awful.layout.suit.floating,
     awful.layout.suit.tile,
