@@ -64,9 +64,7 @@ local modkey       = "Mod4"
 local altkey       = "Mod1"
 local terminal     = "termite"
 local editor       = "nvim"
-local gui_editor   = "gvim"
 local browser      = "firefox"
-local guieditor    = "atom"
 local scrlocker    = "xtrlock"
 
 awful.util.terminal = terminal
@@ -474,9 +472,6 @@ globalkeys = my_table.join(
     -- User programs
     awful.key({ modkey }, "q", function () awful.spawn(browser) end,
               {description = "run browser", group = "launcher"}),
-    awful.key({ modkey }, "a", function () awful.spawn(guieditor) end,
-              {description = "run gui editor", group = "launcher"}),
-
     -- Default
     --[[ Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
