@@ -66,7 +66,7 @@ local terminal     = "st"
 local editor       = "nvim"
 local browser      = "firefox"
 local scrlocker    = "slock"
-local dmenu        = "dmenu"
+local dmenu        = "dmenu_run"
 
 awful.util.terminal = terminal
 awful.util.tagnames = { "🦊", "📝", "🎵", "🎬", "🎉" }
