@@ -413,7 +413,7 @@ globalkeys = my_table.join(
     -- Prompt
     awful.key({ modkey }, "r", function () awful.spawn(dmenu) end,
               {description = "run prompt", group = "launcher"}),
-    awful.key({ modkey }, "e", function () awful.spawn(dmenu-emoji) end,
+    awful.key({ modkey }, "e", function () awful.spawn(emoji) end,
               {description = "run prompt", group = "launcher"}),
 
     awful.key({ modkey }, "x",
