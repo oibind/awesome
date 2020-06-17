@@ -62,7 +62,7 @@ end
 local chosen_theme = "multicolor"
 local modkey       = "Mod4"
 local altkey       = "Mod1"
-local terminal     = "termite"
+local terminal     = "st"
 local editor       = "nvim"
 local browser      = "firefox"
 local scrlocker    = "xtrlock"
