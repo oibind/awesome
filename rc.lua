@@ -65,7 +65,7 @@ local altkey       = "Mod1"
 local terminal     = "st"
 local editor       = "nvim"
 local browser      = "firefox"
-local scrlocker    = "xtrlock"
+local scrlocker    = "slock"
 local dmenu        = "dmenu"
 
 awful.util.terminal = terminal
