@@ -67,6 +67,7 @@ local editor       = "nvim"
 local browser      = "firefox"
 local scrlocker    = "slock"
 local dmenu        = "dmenu_run"
+local emoji        = "dmenu-emoji"
 
 awful.util.terminal = terminal
 awful.util.tagnames = { "🦊", "📝", "🎵", "🎬", "🎉" }
@@ -411,6 +412,8 @@ globalkeys = my_table.join(
 
     -- Prompt
     awful.key({ modkey }, "r", function () awful.spawn(dmenu) end,
+              {description = "run prompt", group = "launcher"}),
+    awful.key({ modkey }, "e", function () awful.spawn(dmenu-emoji) end,
               {description = "run prompt", group = "launcher"}),
 
     awful.key({ modkey }, "x",
