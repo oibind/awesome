@@ -66,6 +66,7 @@ local terminal     = "st"
 local editor       = "nvim"
 local browser      = "firefox"
 local scrlocker    = "xtrlock"
+local dmenu        = "dmenu"
 
 awful.util.terminal = terminal
 awful.util.tagnames = { "🦊", "📝", "🎵", "🎬", "🎉" }
@@ -409,7 +410,7 @@ globalkeys = my_table.join(
               {description = "run browser", group = "launcher"}),
 
     -- Prompt
-    awful.key({ modkey }, "r", function () awful.screen.focused().mypromptbox:run() end,
+    awful.key({ modkey }, "r", function () awful.spawn(dmenu) end,
               {description = "run prompt", group = "launcher"}),
 
     awful.key({ modkey }, "x",
