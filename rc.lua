@@ -65,7 +65,6 @@ local altkey       = "Mod1"
 local terminal     = "st"
 local editor       = "nvim"
 local browser      = "firefox"
-local scrlocker    = "slock"
 local dmenu        = "dmenu_run"
 local emoji        = "dmenu-emoji"
 
@@ -204,11 +203,7 @@ globalkeys = my_table.join(
               {description = "take a screenshot", group = "hotkeys"}),
 
     -- X screen locker
-    -- lock but still display screen
-    awful.key({ altkey, "Control" }, ";", function () os.execute("xtrlock") end,
-              {description = "lock screen", group = "hotkeys"}),
-    -- lock but blackscreeen
-    awful.key({ altkey, "Control" }, "l", function () os.execute("xtrlock -b") end,
+    awful.key({ altkey, "Control" }, "l", function () os.execute("slock") end,
               {description = "lock screen", group = "hotkeys"}),
 
     -- Hotkeys
