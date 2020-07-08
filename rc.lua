@@ -69,7 +69,7 @@ local dmenu        = "dmenu_run"
 local emoji        = "dmenu-emoji"
 
 awful.util.terminal = terminal
-awful.util.tagnames = { "🦊", "📝", "🎵", "🎬", "🎉" }
+awful.util.tagnames = { "web", "dev", "media", "testing", "other" }
 awful.layout.layouts = {
     awful.layout.suit.floating,
     awful.layout.suit.tile,
