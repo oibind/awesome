@@ -66,7 +66,7 @@ local terminal     = "st"
 local editor       = "nvim"
 local browser      = "firefox"
 local dmenu        = "dmenu_run"
-local emoji        = "dmenu-emoji"
+local emoji        = "dmenuemoji"
 
 awful.util.terminal = terminal
 awful.util.tagnames = { "web", "dev", "media", "testing", "other" }
