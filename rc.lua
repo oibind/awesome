@@ -117,12 +117,8 @@ awful.util.tasklist_buttons = my_table.join(
         local instance = nil
 
         return function ()
-            if instance and instance.wibox.visible then
                 instance:hide()
                 instance = nil
-            else
-                instance = awful.menu.clients({theme = {width = dpi(250)}})
-            end
         end
     end),
     awful.button({ }, 4, function () awful.client.focus.byidx(1) end),
@@ -141,15 +137,6 @@ lain.layout.cascade.tile.ncol          = 2
 
 beautiful.init(awful.util.getdir("config") .. "/theme/theme.lua")
 -- }}}
-
--- {{{ Menu
-local myawesomemenu = {
-    { "hotkeys", function() return false, hotkeys_popup.show_help end },
-    { "manual", terminal .. " -e man awesome" },
-    { "edit config", string.format("%s -e %s %s", terminal, editor, awesome.conffile) },
-    { "restart", awesome.restart },
-    { "quit", function() awesome.quit() end }
-}
 
 -- {{{ Screen
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
