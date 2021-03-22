@@ -59,7 +59,6 @@ end
 
 -- {{{ Variable definitions
 
-local chosen_theme = "multicolor"
 local modkey       = "Mod4"
 local altkey       = "Mod1"
 local terminal     = "st"
@@ -143,7 +142,7 @@ lain.layout.cascade.tile.extra_padding = dpi(5)
 lain.layout.cascade.tile.nmaster       = 5
 lain.layout.cascade.tile.ncol          = 2
 
-beautiful.init(string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme))
+beautiful.init(awful.util.getdir("config") .. "/theme/theme.lua")
 -- }}}
 
 -- {{{ Menu
