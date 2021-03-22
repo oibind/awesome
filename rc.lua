@@ -101,8 +101,6 @@ awful.util.tasklist_buttons = my_table.join(
         if c == client.focus then
             c.minimized = true
         else
-            --c:emit_signal("request::activate", "tasklist", {raise = true})<Paste>
-
             -- Without this, the following
             -- :isvisible() makes no sense
             c.minimized = false
