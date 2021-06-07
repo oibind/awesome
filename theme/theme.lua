@@ -44,7 +44,6 @@ theme.widget_cpu                                = theme.confdir .. "/icons/cpu.p
 theme.widget_mem                                = theme.confdir .. "/icons/mem.png"
 theme.widget_netdown                            = theme.confdir .. "/icons/net_down.png"
 theme.widget_netup                              = theme.confdir .. "/icons/net_up.png"
-theme.widget_batt                               = theme.confdir .. "/icons/bat.png"
 theme.widget_clock                              = theme.confdir .. "/icons/clock.png"
 theme.widget_vol                                = theme.confdir .. "/icons/spkr.png"
 theme.taglist_squares_sel                       = theme.confdir .. "/icons/square_a.png"
@@ -97,20 +96,6 @@ local tempicon = wibox.widget.imagebox(theme.widget_temp)
 local temp = lain.widget.temp({
     settings = function()
         widget:set_markup(markup.fontfg(theme.font, "#f1af5f", coretemp_now .. "°C "))
-    end
-})
-
--- Battery
-local baticon = wibox.widget.imagebox(theme.widget_batt)
-local bat = lain.widget.bat({
-    settings = function()
-        local perc = bat_now.perc ~= "N/A" and bat_now.perc .. "%" or bat_now.perc
-
-        if bat_now.ac_status == 1 then
-            perc = perc .. " plug"
-        end
-
-        widget:set_markup(markup.fontfg(theme.font, theme.fg_normal, perc .. " "))
     end
 })
 
@@ -204,8 +189,6 @@ function theme.at_screen_connect(s)
             cpu.widget,
             tempicon,
             temp.widget,
-            baticon,
-            bat.widget,
             clockicon,
             mytextclock,
         },
